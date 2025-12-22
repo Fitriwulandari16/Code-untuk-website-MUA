@@ -135,16 +135,25 @@ body {
     mix-blend-mode: difference;
 }
 
-.hero .content .cta{
-    margin-top: 1rem;
+.hero .content .cta {
+    margin-top: 1.5rem;
     display: inline-block;
     padding: 1rem 3rem;
-    font-size: 1.4rem;
+    font-size: 1.6rem;
     color: #fff;
     background-color: var(--primary);
-    border-radius: 0.5rem;
-    box-shadow: 1px 1px 3px rgba(1,1,3,0.5);
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(245,142,202,0.4);
+    transition: 0.3s ease;
 }
+
+.hero .content .cta:hover {
+    transform: scale(1.06);
+    box-shadow: 0 6px 18px rgba(245,142,202,0.55);
+}
+
+
 
 /* About section */
 .about, 
@@ -482,6 +491,245 @@ footer .credit a{
     color: var(--bg);
     font-weight: bold;
 }
+
+/* ================= SEARCH POPUP ================= */
+.search-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.search-popup.active {
+    display: flex;
+}
+
+.search-box {
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.search-box input {
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    width: 250px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#close-search {
+    font-size: 26px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: #333;
+}
+
+/* ================= CART SIDEBAR ================= */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -300px; /* hidden dulu */
+    width: 300px;
+    height: 100vh;
+    background: #fff;
+    padding: 20px;
+    transition: .3s ease;
+    z-index: 1000;
+    box-shadow: -4px 0 10px rgba(0,0,0,0.1);
+}
+
+.cart-sidebar.active {
+    right: 0;
+}
+
+#close-cart {
+    font-size: 26px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    float: right;
+}
+
+.cart-content {
+    margin-top: 50px;
+    font-size: 14px;
+    color: #666;
+}
+
+/* ================= OVERLAY ================= */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    display: none;
+    z-index: 900;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* ================= STICKY NAVBAR ================= */
+.navbar.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: var(--bg); /* atau warna navbar kamu */
+    box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+    z-index: 999;
+}
+
+/* --- HAMBURGER ICON --- */
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 28px;
+    height: 3px;
+    background: var(--primary);
+}
+
+/* --- DRAWER KERANJANG --- */
+.drawer {
+    position: fixed;
+    top: 0;
+    right: -350px; /* disembunyikan */
+    width: 300px;
+    height: 100vh;
+    background: #111;
+    color: white;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,.4);
+    transition: 0.4s;
+    z-index: 1000;
+}
+
+.drawer.active {
+    right: 0; /* muncul */
+}
+
+.drawer h2 {
+    margin-bottom: 20px;
+}
+
+/* --- ITEM DI KERANJANG --- */
+.cart-list {
+    list-style: none;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #444;
+}
+
+.close-btn {
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background: var(--primary);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- OVERLAY --- */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+    display: none;
+    z-index: 900;
+}
+
+.overlay.active {
+    display: block;
+}
+
+/* Drawer Jasa */
+.service-drawer {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: -2px 0 10px rgba(0,0,0,0.3);
+    transition: .3s;
+    z-index: 999;
+    overflow-y: auto;
+}
+
+.service-drawer.active {
+    right: 0;
+}
+
+.service-drawer h3 {
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.service-drawer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.service-drawer ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+}
+
+#close-service {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+/* ===== Search Redirect Animation ===== */
+.redirect-anim {
+    position: fixed;
+    inset: 0;
+    background:rgba(0,0,0,0.8);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    font-size:2rem;
+    opacity:0;
+    pointer-events:none;
+    transition:0.5s;
+    z-index:9999;
+}
+
+.redirect-anim.show {
+    opacity:1;
+    pointer-events:auto;
+}
+
 
 /* Media Queries */
 

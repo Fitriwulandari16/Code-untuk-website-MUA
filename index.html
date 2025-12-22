@@ -42,12 +42,123 @@
     </nav>
     <!-- navbar end -->
 
+    <!-- Search Popup -->
+    <div class="search-popup">
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Cari sesuatu...">
+        <ul class="suggest-list"></ul>
+        <button id="do-search">Cari</button>
+        <button id="close-search">×</button>
+    </div>
+    </div>
+    <!-- End of Search Popup -->
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="cart-sidebar">
+    <button id="close-cart">×</button>
+        <h3>Keranjang Belanja</h3>
+        <div class="cart-content">Belum ada item.</div>
+    </div>
+
+    <!-- Overlay Gelap -->
+    <div id="overlay" class="overlay"></div>
+    
+    <div class="theme-menu">
+        <a href="#gold-theme">Gold Theme</a>
+        <a href="#rose-theme">Rose Gold</a>
+        <a href="#classic-theme">Classic Wedding</a>
+    </div>
+    <!-- End of Cart Sidebar -->
+    
+    <!-- Drawer Jasa -->
+    <div id="service-drawer" class="service-drawer">
+        <button id="close-service">×</button>
+        <h3>Layanan Arka Project</h3>
+        <ul>
+            <li>Wedding Paket 1</li>
+            <li>Wedding Paket 2</li>
+            <li>Wedding Paket 3</li>
+            <li>Wisuda</li>
+            <li>Karnaval</li>
+            <li>Engagement</li>
+            <li>Siraman</li>
+        </ul>
+    </div>
+    <!-- End of Drawer Jasa -->
+    
+    <!-- Make Up Wedding -->
+<!-- <div class="service-card">
+    <h3>Make Up Wedding</h3>
+    <p>Rp 750.000</p>
+    <button class="add-to-cart" data-name="Make Up Wedding" data-price="750000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Make Up Tunangan / Lamaran -->
+<!-- <div class="service-card">
+    <h3>Make Up Tunangan / Lamaran</h3>
+    <p>Rp 450.000</p>
+    <button class="add-to-cart" data-name="Make Up Tunangan / Lamaran" data-price="450000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Make Up Wisuda -->
+<!-- <div class="service-card">
+    <h3>Make Up Wisuda</h3>
+    <p>Rp 250.000</p>
+    <button class="add-to-cart" data-name="Make Up Wisuda" data-price="250000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Make Up Pesta -->
+<!-- <div class="service-card">
+    <h3>Make Up Pesta</h3>
+    <p>Rp 300.000</p>
+    <button class="add-to-cart" data-name="Make Up Pesta" data-price="300000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Hairdo Only -->
+<!-- <div class="service-card">
+    <h3>Hairdo Only</h3>
+    <p>Rp 150.000</p>
+    <button class="add-to-cart" data-name="Hairdo Only" data-price="150000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Make Up + Hairdo Combo -->
+<!-- <div class="service-card">
+    <h3>Make Up + Hairdo</h3>
+    <p>Rp 400.000</p>
+    <button class="add-to-cart" data-name="Make Up + Hairdo" data-price="400000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+<!-- Paket Wedding Lengkap -->
+<!-- <div class="service-card">
+    <h3>Paket Wedding Lengkap</h3>
+    <p>Rp 1.500.000</p>
+    <button class="add-to-cart" data-name="Paket Wedding Lengkap" data-price="1500000">
+        Pesan Sekarang
+    </button>
+</div> -->
+
+    <div class="redirect-anim">Mengarahkan ke layanan...</div>
+
     <!-- hero section start -->
     <section class="hero" id="home">
         <main class="content">
             <h1>MAKEUP<span>ARTIST</span></h1>
             <p>Percayakan riasan Anda kepada Arka Project, tempat keindahan, ketelitian, dan profesionalisme berpadu untuk menghadirkan tampilan elegan yang meningkatkan rasa percaya diri Anda di setiap momen berharga.</p>
-            <a href="#"class="cta">Pesan Sekarang</a>
+            <a href="https://wa.me/6287846380434?text=Halo, saya mau pesan jasa ArkaProject" class="cta" target="_blank">
+                Pesan Sekarang
+            </a>
         </main>
     </section>
     <!-- hero section end -->
@@ -351,5 +462,49 @@
 
     <!-- my javascript -->
     <script src="JS/script.js"></script>
+    
+    <script>
+    // ELEMENT
+    const hamburgerMenu = document.getElementById("hamburger-menu");
+    const serviceDrawer = document.getElementById("service-drawer");
+    const closeService = document.getElementById("close-service");
+
+    const cartSidebar = document.getElementById("cart-sidebar");
+    const closeCart = document.getElementById("close-cart");
+
+    const overlay = document.getElementById("overlay");
+
+    // === HAMBURGER → SERVICE DRAWER ===
+    hamburgerMenu.onclick = () => {
+        serviceDrawer.classList.add("active");
+        overlay.classList.add("active");
+    };
+
+    // === CLOSE SERVICE DRAWER ===
+    closeService.onclick = () => {
+        serviceDrawer.classList.remove("active");
+        overlay.classList.remove("active");
+    };
+
+    // === SHOPPING CART ===
+    document.getElementById("shopping-cart").onclick = () => {
+        cartSidebar.classList.add("active");
+        overlay.classList.add("active");
+    };
+
+    // === CLOSE CART ===
+    closeCart.onclick = () => {
+        cartSidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    };
+
+    // === OVERLAY CLOSE ALL ===
+    overlay.onclick = () => {
+        serviceDrawer.classList.remove("active");
+        cartSidebar.classList.remove("active");
+        overlay.classList.remove("active");
+    };
+    </script>
+
 </body>
 </html>
