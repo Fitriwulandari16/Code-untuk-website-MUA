@@ -1,24 +1,41 @@
-//Toggle class active
+// ================== NAVBAR ==================
 const navbarNav = document.querySelector('.navbar-nav');
-//ketika hamburger menu di klik
-document.querySelector('#hamburger-menu').onclick = () => {
-    navbarNav.classList.toggle('active');
-};
-
-//klik diluar sidebar untuk menghilangkan nav
-
 const hamburger = document.querySelector('#hamburger-menu');
 
-document.addEventListener('click', function(e){
-    if(!hamburger.contains(e.target) && !navbarNav.contains(e.target)) {
+hamburger.addEventListener('click', () => {
+    navbarNav.classList.toggle('active');
+    hamburger.classList.toggle('active');
+});
+
+document.addEventListener('click', (e) => {
+    if (
+        !navbarNav.contains(e.target) &&
+        !hamburger.contains(e.target)
+    ) {
         navbarNav.classList.remove('active');
+        hamburger.classList.remove('active');
     }
 });
 
-// ================== Search Popup ==================
+// ================== OVERLAY ==================
+const overlay = document.querySelector('.overlay');
+
+// ================== SEARCH POPUP ==================
 const searchBtn = document.querySelector('#search');
 const searchPopup = document.querySelector('.search-popup');
 const closeSearch = document.querySelector('#close-search');
+const doSearch = document.querySelector('#do-search');
+const searchInput = document.querySelector('#search-input');
+const suggestList = document.querySelector('.suggest-list');
+
+const suggestions = [
+    "Makeup Pengantin",
+    "Makeup Wisuda",
+    "Wedding Decoration",
+    "Layanan Makeup",
+    "Paket Wedding",
+    "Portofolio Arka Project"
+];
 
 if (searchBtn) {
     searchBtn.onclick = () => {
@@ -34,10 +51,48 @@ if (closeSearch) {
     };
 }
 
-// ================== Cart Sidebar ==================
+doSearch.addEventListener('click', () => {
+    if (searchInput.value.trim() !== "") {
+        window.location.href = "#services";
+    }
+    searchPopup.classList.remove('active');
+    overlay.classList.remove('active');
+});
+
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === "Enter" && searchInput.value.trim() !== "") {
+        e.preventDefault();
+        window.location.href = "#services";
+        searchPopup.classList.remove('active');
+        overlay.classList.remove('active');
+    }
+});
+
+// auto suggest
+searchInput.addEventListener('input', () => {
+    const keyword = searchInput.value.toLowerCase();
+    suggestList.innerHTML = "";
+
+    if (keyword === "") return;
+
+    suggestions
+        .filter(item => item.toLowerCase().includes(keyword))
+        .forEach(item => {
+            const li = document.createElement("li");
+            li.textContent = item;
+            li.onclick = () => {
+                searchInput.value = item;
+                suggestList.innerHTML = "";
+            };
+            suggestList.appendChild(li);
+        });
+});
+
+// ================== CART SIDEBAR ==================
 const cartBtn = document.querySelector('#shopping-cart');
 const cartSidebar = document.querySelector('.cart-sidebar');
 const closeCart = document.querySelector('#close-cart');
+const cartContent = document.getElementById("cart-content");
 
 if (cartBtn) {
     cartBtn.onclick = () => {
@@ -53,142 +108,17 @@ if (closeCart) {
     };
 }
 
-// ================== Overlay ==================
-const overlay = document.querySelector('.overlay');
-
+// overlay close all
 overlay.addEventListener('click', () => {
-    // close semua popup
     searchPopup.classList.remove('active');
     cartSidebar.classList.remove('active');
     overlay.classList.remove('active');
 });
 
-// ================== Animasi Hamburger ==================
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-});
-
-// ================== Sticky Navbar ==================
-window.addEventListener('scroll', () => {
-    const navbar = document.querySelector('.navbar');
-    navbar.classList.toggle('sticky', window.scrollY > 50);
-});
-
-// ================== Search Redirect ==================
-// ================== Search Redirect ke Layanan ==================
-const doSearch = document.querySelector('#do-search');
-const searchInput = document.querySelector('#search-input');
-
-doSearch.addEventListener('click', () => {
-
-    // Jika user mengetik apa saja
-    let keyword = searchInput.value.trim();
-
-    if (keyword !== "") {
-        // langsung arahkan ke section layanan
-        window.location.href = "#services";
-    }
-
-    // Tutup popup
-    searchPopup.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-// ================== Enter Auto Search ==================
-searchInput.addEventListener('keydown', function (e) {
-    if (e.key === "Enter") {
-        e.preventDefault();
-
-        if (searchInput.value.trim() !== "") {
-            startSearchAnimation();
-            setTimeout(() => {
-                window.location.href = "#services";
-            }, 600);
-        }
-
-        searchPopup.classList.remove('active');
-        overlay.classList.remove('active');
-    }
-});
-
-// ================== Auto Suggest ==================
-const suggestList = document.querySelector('.suggest-list');
-
-const suggestions = [
-    "Makeup Pengantin",
-    "Makeup Wisuda",
-    "Wedding Decoration",
-    "Layanan Makeup",
-    "Paket Wedding",
-    "Portofolio Arka Project"
-];
-
-searchInput.addEventListener('input', () => {
-    let keyword = searchInput.value.toLowerCase();
-
-    // Kosongkan list
-    suggestList.innerHTML = "";
-
-    if (keyword === "") return;
-
-    let filtered = suggestions.filter(item =>
-        item.toLowerCase().includes(keyword)
-    );
-
-    filtered.forEach(item => {
-        let li = document.createElement("li");
-        li.textContent = item;
-
-        li.onclick = () => {
-            searchInput.value = item;
-            suggestList.innerHTML = "";
-        };
-
-        suggestList.appendChild(li);
-    });
-});
-
-// ================== Search Animation ==================
-function startSearchAnimation() {
-    const anim = document.querySelector('.redirect-anim');
-    anim.classList.add('show');
-
-    setTimeout(() => {
-        anim.classList.remove('show');
-    }, 800);
-}
-
-// ================== Search Redirect ke Layanan ==================
-doSearch.addEventListener('click', () => {
-    if (searchInput.value.trim() !== "") {
-        startSearchAnimation();
-
-        setTimeout(() => {
-            window.location.href = "#services";
-        }, 600);
-    }
-
-    searchPopup.classList.remove('active');
-    overlay.classList.remove('active');
-});
-
-document.addEventListener('click', function(e){
-    if (
-        !navbarNav.contains(e.target) &&
-        !hamburger.contains(e.target) &&
-        !e.target.closest(".navbar-extra") &&
-        !e.target.closest(".cart-sidebar") &&
-        !e.target.closest(".search-popup")
-    ) {
-        navbarNav.classList.remove('active');
-    }
-});
-
-const cartItems = []; // tempat menyimpan item
+// ================== CART LOGIC ==================
+const cartItems = [];
 
 function renderCart() {
-    const cartContent = document.getElementById("cart-content");
-
     if (cartItems.length === 0) {
         cartContent.innerHTML = `<p class="empty">Belum ada item.</p>`;
         return;
@@ -204,14 +134,34 @@ function renderCart() {
         .join("");
 }
 
-// tombol tambah ke keranjang
-document.querySelectorAll(".add-to-cart").forEach(btn => {
-    btn.addEventListener("click", () => {
-        const name = btn.dataset.name;
-        const price = parseInt(btn.dataset.price);
+// ================== TOAST ==================
+const toast = document.getElementById("toast");
+
+function showToast() {
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2000);
+}
+
+// ================== ADD TO CART ==================
+document.querySelectorAll(".add-to-cart").forEach(button => {
+    button.addEventListener("click", () => {
+        const name = button.dataset.name;
+        const price = parseInt(button.dataset.price);
 
         cartItems.push({ name, price });
+        renderCart();
+        showToast();
 
-        renderCart(); // update tampilan
+        cartSidebar.classList.add('active');
+        overlay.classList.add('active');
     });
 });
+
+// ================== STICKY NAVBAR ==================
+window.addEventListener('scroll', () => {
+    const navbar = document.querySelector('.navbar');
+    navbar.classList.toggle('sticky', window.scrollY > 50);
+});
+

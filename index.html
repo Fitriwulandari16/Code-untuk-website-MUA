@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    
+    <div id="toast" class="toast">Anda telah menambahkan ke keranjang</div>
     <!-- navbar start -->
     <nav class="navbar">
         <a href="#" class="navbar-logo">Arkaproject<span>wedding&decoration</span>.</a>
@@ -57,7 +57,7 @@
     <div id="cart-sidebar" class="cart-sidebar">
     <button id="close-cart">×</button>
         <h3>Keranjang Belanja</h3>
-        <div class="cart-content">Belum ada item.</div>
+        <div class="cart-content" id="cart-content"></div>
     </div>
 
     <!-- Overlay Gelap -->
@@ -85,69 +85,6 @@
         </ul>
     </div>
     <!-- End of Drawer Jasa -->
-    
-    <!-- Make Up Wedding -->
-<!-- <div class="service-card">
-    <h3>Make Up Wedding</h3>
-    <p>Rp 750.000</p>
-    <button class="add-to-cart" data-name="Make Up Wedding" data-price="750000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Make Up Tunangan / Lamaran -->
-<!-- <div class="service-card">
-    <h3>Make Up Tunangan / Lamaran</h3>
-    <p>Rp 450.000</p>
-    <button class="add-to-cart" data-name="Make Up Tunangan / Lamaran" data-price="450000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Make Up Wisuda -->
-<!-- <div class="service-card">
-    <h3>Make Up Wisuda</h3>
-    <p>Rp 250.000</p>
-    <button class="add-to-cart" data-name="Make Up Wisuda" data-price="250000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Make Up Pesta -->
-<!-- <div class="service-card">
-    <h3>Make Up Pesta</h3>
-    <p>Rp 300.000</p>
-    <button class="add-to-cart" data-name="Make Up Pesta" data-price="300000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Hairdo Only -->
-<!-- <div class="service-card">
-    <h3>Hairdo Only</h3>
-    <p>Rp 150.000</p>
-    <button class="add-to-cart" data-name="Hairdo Only" data-price="150000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Make Up + Hairdo Combo -->
-<!-- <div class="service-card">
-    <h3>Make Up + Hairdo</h3>
-    <p>Rp 400.000</p>
-    <button class="add-to-cart" data-name="Make Up + Hairdo" data-price="400000">
-        Pesan Sekarang
-    </button>
-</div> -->
-
-<!-- Paket Wedding Lengkap -->
-<!-- <div class="service-card">
-    <h3>Paket Wedding Lengkap</h3>
-    <p>Rp 1.500.000</p>
-    <button class="add-to-cart" data-name="Paket Wedding Lengkap" data-price="1500000">
-        Pesan Sekarang
-    </button>
-</div> -->
 
     <div class="redirect-anim">Mengarahkan ke layanan...</div>
 
@@ -156,9 +93,10 @@
         <main class="content">
             <h1>MAKEUP<span>ARTIST</span></h1>
             <p>Percayakan riasan Anda kepada Arka Project, tempat keindahan, ketelitian, dan profesionalisme berpadu untuk menghadirkan tampilan elegan yang meningkatkan rasa percaya diri Anda di setiap momen berharga.</p>
-            <a href="https://wa.me/6287846380434?text=Halo, saya mau pesan jasa ArkaProject" class="cta" target="_blank">
+            <a href="#contact" class="cta">
                 Pesan Sekarang
             </a>
+
         </main>
     </section>
     <!-- hero section end -->
@@ -266,45 +204,109 @@
     <section id="services" class="menu">
         <h2><span>Arka_Project</span> Melayani :</h2>
         <p>Daftar jasa yang tersedia :</p>
-    
+
         <div class="row">
+
+            <!-- MENU 1 -->
             <div class="menu-card">
-                <img src="Gambar/menuwedding1.jpg" alt="Wedding Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Wedding Paket 1 -</h3>
-                <p class="menu-card-price">IDR 1.500K</p>
+                <img src="Gambar/menuwedding1.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Wedding Paket 1</h3>
+                <p class="menu-card-price">Rp 1.500.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Wedding Paket 1"
+                    data-price="1500000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+
+            <!-- MENU 2 -->
             <div class="menu-card">
-                <img src="Gambar/paket2.jpg" alt="Wedding Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Wedding Paket 2 -</h3>
-                <p class="menu-card-price">IDR 2.500K</p>
+                <img src="Gambar/paket2.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Wedding Paket 2</h3>
+                <p class="menu-card-price">Rp 2.500.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Wedding Paket 2"
+                    data-price="2500000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+
+            <!-- MENU 3 -->
             <div class="menu-card">
-                <img src="Gambar/menuwedding2.jpg" alt="Wedding Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Wedding Paket 3 -</h3>
-                <p class="menu-card-price">IDR 3.300K</p>
+                <img src="Gambar/menuwedding2.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Wedding Paket 3</h3>
+                <p class="menu-card-price">Rp 3.300.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Wedding Paket 3"
+                    data-price="3300000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+            <!-- MENU WISUDA -->
             <div class="menu-card">
-                <img src="Gambar/menuwisuda.jpg" alt="Wisuda Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Wisuda -</h3>
-                <p class="menu-card-price">IDR 150K-200K</p>
+                <img src="Gambar/menuwisuda.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Make Up Wisuda</h3>
+                <p class="menu-card-price">Rp 350.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Make Up Wisuda"
+                    data-price="350000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+
+            <!-- MENU ENGAGEMENT -->
             <div class="menu-card">
-                <img src="Gambar/menukarnaval.jpg" alt="Wedding Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Karnaval -</h3>
-                <p class="menu-card-price">IDR 250K</p>
+                <img src="Gambar/engagement.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Make Up Engagement</h3>
+                <p class="menu-card-price">Rp 800.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Make Up Engagement"
+                    data-price="800000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+
+            <!-- MENU SIRAMAN -->
             <div class="menu-card">
-                <img src="Gambar/engagement.jpg" alt="Engagement Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Engagement -</h3>
-                <p class="menu-card-price">IDR 250K</p>
+                <img src="Gambar/menusiraman.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Make Up Siraman</h3>
+                <p class="menu-card-price">Rp 600.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Make Up Siraman"
+                    data-price="600000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+            <!-- MENU KARNAVAL -->
             <div class="menu-card">
-                <img src="Gambar/menusiraman.jpg" alt="Siraman Makeup" class="menu-card-img">
-                <h3 class="menu-card-title">- Siraman -</h3>
-                <p class="menu-card-price">IDR 500K</p>
+                <img src="Gambar/menukarnaval.jpg" class="menu-card-img">
+                <h3 class="menu-card-title">Make Up Karnaval</h3>
+                <p class="menu-card-price">Rp 500.000</p>
+
+                <button 
+                    class="add-to-cart"
+                    data-name="Make Up Karnaval"
+                    data-price="500000">
+                    Tambah ke Keranjang
+                </button>
             </div>
+
+
         </div>
     </section>
+
     <!-- Menu Section end -->
 
     <!-- Portofolio Section start -->
@@ -410,26 +412,40 @@
     <section id="contact" class="contact">
         <h2><span>Kontak</span> Kami</h2>
         <p>Hubungi Arka Project untuk pemesanan jasa makeup sesuai kebutuhan acara spesial Anda.</p>
+
         <div class="row">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3960.57304150111!2d113.57910537499671!3d-6.941520193058536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sid!2sid!4v1764716715505!5m2!1sid!2sid" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="map"></iframe>
-            
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=..." 
+                class="map">
+            </iframe>
+
             <form action="">
+                <!-- INPUT NAMA -->
                 <div class="input-grup">
-                    <i data-feather="user"></i> 
-                    <input type="text" placeholder="Nama">
+                    <i data-feather="user"></i>
+                    <input 
+                        type="text" 
+                        placeholder="Nama"
+                        id="nama">
                 </div>
+
+                <!-- INPUT EMAIL -->
                 <div class="input-grup">
                     <i data-feather="mail"></i>
                     <input type="text" placeholder="Email">
                 </div>
+
+                <!-- INPUT TELEPON -->
                 <div class="input-grup">
                     <i data-feather="phone"></i>
                     <input type="text" placeholder="Telepon">
                 </div>
-                <button type="submit" class="btn">Kirim Pesan </button>
+
+                <button type="submit" class="btn">Kirim Pesan</button>
             </form>
         </div>
     </section>
+
     <!-- Contact Menu Section end -->
 
     <!-- Footer start -->
@@ -505,6 +521,30 @@
         overlay.classList.remove("active");
     };
     </script>
+
+    <div class="cart-sidebar">
+    <div class="cart-header">
+        <h3>Keranjang</h3>
+        <button id="close-cart">✕</button>
+    </div>
+
+    <div id="cart-content"></div>
+
+    <!-- CHECKOUT BOX -->
+    <div class="checkout-box">
+        <div class="checkout-total">
+            <span>Total</span>
+            <strong id="total-price">Rp 0</strong>
+        </div>
+
+        <button id="checkout-btn">Checkout WhatsApp</button>
+    </div>
+</div>
+
+<div class="overlay"></div>
+
+<!-- TOAST -->
+<div id="toast">Anda telah menambahkan ke keranjang</div>
 
 </body>
 </html>
