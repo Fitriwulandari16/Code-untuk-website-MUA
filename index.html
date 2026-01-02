@@ -1,116 +1,79 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MUA Arka Project</title>
-
-    <!-- fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,300;0,400;0,700;1,700&display=swap"
-    rel="stylesheet"/>
-
-    <!-- feather icons -->
+    <title>Arka Project - Professional Makeup Artist</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
-
-    <!-- css boxicons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <!-- Boxicons -->
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-
-    <!-- style -->
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="CSS/style.css">
 </head>
 <body>
-    <div id="toast" class="toast">Anda telah menambahkan ke keranjang</div>
-    <!-- navbar start -->
+    
+    <!-- Navbar Start -->
     <nav class="navbar">
-        <a href="#" class="navbar-logo">Arkaproject<span>wedding&decoration</span>.</a>
-        <div class="navbar-nav">
-            <a href="#home">Home</a>
-            <a href="#about">Tentang Kami</a>
-            <a href="#services">Layanan</a>
-            <a href="#portofolio">Potofolio</a>
-            <a href="#contact">Kontak</a>
+        <div class="navbar-logo" data-testid="navbar-logo">
+            <i data-feather="aperture"></i> Arka<span>_Project</span>
         </div>
-
+        
+        <div class="navbar-nav" data-testid="navbar-menu">
+            <a href="#home" data-testid="nav-home">Home</a>
+            <a href="#about" data-testid="nav-about">About</a>
+            <a href="#packages" data-testid="nav-packages">Paket</a>
+            <a href="#portofolio" data-testid="nav-portfolio">Galeri</a>
+            <a href="#testimonials" data-testid="nav-testimonials">Testimoni</a>
+            <a href="#contact" data-testid="nav-contact">Kontak</a>
+        </div>
+        
         <div class="navbar-extra">
-            <a href="#" id="search"> <i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart"> <i data-feather="shopping-cart"></i></a>
-            <a href="#" id="hamburger-menu"> <i data-feather="menu"></i></a>
+            <a href="#" id="search-button" data-testid="search-button"><i data-feather="search"></i></a>
+            <a href="#" id="shopping-cart-button" data-testid="cart-button"><i data-feather="shopping-bag"></i></a>
+            <a href="#" id="hamburger-menu" data-testid="hamburger-menu"><i data-feather="menu"></i></a>
+        </div>
+        
+        <!-- Search Box -->
+        <div class="search-form" data-testid="search-form">
+            <input type="search" id="search-box" placeholder="Cari di galeri..." data-testid="search-input">
+            <label for="search-box"><i data-feather="search"></i></label>
         </div>
     </nav>
-    <!-- navbar end -->
+    <!-- Navbar End -->
 
-    <!-- Search Popup -->
-    <div class="search-popup">
-    <div class="search-box">
-        <input type="text" id="search-input" placeholder="Cari sesuatu...">
-        <ul class="suggest-list"></ul>
-        <button id="do-search">Cari</button>
-        <button id="close-search">×</button>
-    </div>
-    </div>
-    <!-- End of Search Popup -->
-
-    <!-- Cart Sidebar -->
-    <div id="cart-sidebar" class="cart-sidebar">
-    <button id="close-cart">×</button>
-        <h3>Keranjang Belanja</h3>
-        <div class="cart-content" id="cart-content"></div>
-    </div>
-
-    <!-- Overlay Gelap -->
-    <div id="overlay" class="overlay"></div>
-    
-    <div class="theme-menu">
-        <a href="#gold-theme">Gold Theme</a>
-        <a href="#rose-theme">Rose Gold</a>
-        <a href="#classic-theme">Classic Wedding</a>
-    </div>
-    <!-- End of Cart Sidebar -->
-    
-    <!-- Drawer Jasa -->
-    <div id="service-drawer" class="service-drawer">
-        <button id="close-service">×</button>
-        <h3>Layanan Arka Project</h3>
-        <ul>
-            <li>Wedding Paket 1</li>
-            <li>Wedding Paket 2</li>
-            <li>Wedding Paket 3</li>
-            <li>Wisuda</li>
-            <li>Karnaval</li>
-            <li>Engagement</li>
-            <li>Siraman</li>
-        </ul>
-    </div>
-    <!-- End of Drawer Jasa -->
-
-    <div class="redirect-anim">Mengarahkan ke layanan...</div>
-
-    <!-- hero section start -->
-    <section class="hero" id="home">
-        <main class="content">
-            <h1>MAKEUP<span>ARTIST</span></h1>
-            <p>Percayakan riasan Anda kepada Arka Project, tempat keindahan, ketelitian, dan profesionalisme berpadu untuk menghadirkan tampilan elegan yang meningkatkan rasa percaya diri Anda di setiap momen berharga.</p>
-            <a href="#contact" class="cta">
-                Pesan Sekarang
-            </a>
-
+    <!-- Hero Section Start -->
+    <section class="hero" id="home" data-testid="hero-section">
+        <main class="content" data-aos="fade-up" data-aos-duration="1000">
+            <h1 data-testid="hero-title">MAKEUP<span>ARTIST</span></h1>
+            <p data-testid="hero-description">Percayakan riasan Anda kepada Arka Project, tempat keindahan, ketelitian, dan profesionalisme berpadu untuk menghadirkan tampilan elegan yang meningkatkan rasa percaya diri Anda di setiap momen berharga.</p>
+            <a href="#packages" class="cta" data-testid="hero-cta-button">Lihat Paket</a>
+            <a href="#" class="cta cta-secondary" id="booking-btn" data-testid="hero-booking-button">Pesan Sekarang</a>
         </main>
     </section>
-    <!-- hero section end -->
+    <!-- Hero Section End -->
     
-    <!-- About Section start -->
-    <section id="about" class="about">
-        <h2><span>Tentang</span> Arka_Project</h2>
+    <!-- About Section Start -->
+    <section id="about" class="about" data-testid="about-section">
+        <h2 data-aos="fade-down" data-testid="about-title"><span>Tentang</span> Arka_Project</h2>
 
         <div class="row">
-            <div class="about-img">
-                <img src="Gambar/FotoMUA.jpg" alt="Tentang Kami">
+            <div class="about-img" data-aos="fade-right" data-aos-duration="800">
+                <img src="Gambar/FotoMUA.jpg" alt="Tentang Kami" data-testid="about-image">
             </div>
-            <div class="content">
-                <h3>Profil Make Up Artist</h3>
+            <div class="content" data-aos="fade-left" data-aos-duration="800">
+                <h3 data-testid="about-subtitle">Profil Make Up Artist</h3>
                 <p><strong>Nama:</strong> Afrika Watin AS</p>
                 <p><strong>Brand:</strong> Arka Project Wedding & decoration</p>
                 <p><strong>Tahun Mulai menjadi MUA:</strong> 2023</p>
@@ -119,20 +82,19 @@
                 <p><strong>Domisili:</strong> Sana Dejeh, Pasean, Pamekasan</p>
 
                 <h3>Kenapa memilih Arka Project?</h3>
-                <p>Ditangani oleh MUA profesional dengan pengalaman di berbagai event penting.</p>
+                <p>Ditangani oleh MUA profesional dengan pengalaman di berbagai event penting. Dengan sertifikasi resmi dan portofolio yang memukau, kami siap menghadirkan riasan terbaik untuk momen spesial Anda.</p>
             </div>
-
         </div>
     </section>
-    <!--About section end-->
+    <!-- About Section End -->
 
-    <!-- Sertifikat Section start -->
-    <section class="experience">
-        <h2>Pengalaman <span>& Sertifikat</span></h2>
-        <p>Didukung pengalaman profesional dan sertifikasi terpercaya.</p>
+    <!-- Experience & Sertifikat Section Start -->
+    <section class="experience" data-testid="experience-section">
+        <h2 data-aos="fade-down" data-testid="experience-title">Pengalaman <span>& Sertifikat</span></h2>
+        <p data-aos="fade-down" data-testid="experience-description">Didukung pengalaman profesional dan sertifikasi terpercaya.</p>
 
         <div class="row">
-            <div class="timeline">
+            <div class="timeline" data-aos="fade-right" data-aos-duration="800">
                 <div class="item">2023 - Best Make Up 1 Beauty Flawless Make Up Class</div>
                 <div class="item">2023 - Seminar & Parade Wedding Barbie Flawles Look Make Up</div>
                 <div class="item">2023 - Mengikuti Pelatihan Tata Rias</div>
@@ -141,410 +103,770 @@
                 <div class="item">2023 - Beauty Flawles Make Up Class</div>
                 <div class="item">2020 - Mengikuti Pelatihan Tata Rias Make Up Flawless Glamour</div>
                 <div class="item">2018 - Juara 1 Lomba Perayaan Maulid Nabi SAW</div>  
-        </div>
-            <div class="mua-gallery">
+            </div>
+            
+            <div class="mua-gallery" data-aos="fade-left" data-aos-duration="800">
                 <div class="mua-photo">
-                    <img src="Gambar/sertif1.jpg" alt="MUA Activity">
+                    <img src="Gambar/sertif1.jpg" alt="MUA Activity" data-testid="mua-activity-1">
                 </div>
                 <div class="mua-photo">
-                    <img src="Gambar/sertif2.jpg" alt="MUA Activity">
+                    <img src="Gambar/sertif2.jpg" alt="MUA Activity" data-testid="mua-activity-2">
                 </div>
                 <div class="mua-photo">
-                    <img src="Gambar/sertif3.jpg" alt="MUA Activity">
+                    <img src="Gambar/sertif3.jpg" alt="MUA Activity" data-testid="mua-activity-3">
                 </div>
             </div>
-            <div class="cert-grid">
-                <div class="cert-card">
-                <img src="Gambar/sertifikat1.jpg">
-                <h4>Best Make Up 1</h4>
-                <p>Beauty Flawless Make Up Class - 2023</p>
+            
+            <div class="cert-grid" data-aos="fade-up" data-aos-duration="1000">
+                <div class="cert-card" data-testid="cert-card-1">
+                    <img src="Gambar/sertifikat1.jpg" alt="Sertifikat 1">
+                    <h4>Best Make Up 1</h4>
+                    <p>Beauty Flawless Make Up Class - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-2">
+                    <img src="Gambar/sertifikat2.jpg" alt="Sertifikat 2">
+                    <h4>Peserta</h4>
+                    <p>Seminar & Parade Wedding Barbie Flawles Look Make Up - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-3">
+                    <img src="Gambar/sertifikat3.jpg" alt="Sertifikat 3">
+                    <h4>Peserta</h4>
+                    <p>Mengikuti Pelatihan Tata Rias - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-4">
+                    <img src="Gambar/sertifikat4.jpg" alt="Sertifikat 4">
+                    <h4>Peserta</h4>
+                    <p>Semi Bold Make Up - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-5">
+                    <img src="Gambar/sertifikat6.jpg" alt="Sertifikat 6">
+                    <h4>Peserta</h4>
+                    <p>Workshop Make Up Wedding - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-6">
+                    <img src="Gambar/sertifikat7.jpg" alt="Sertifikat 7">
+                    <h4>Peserta</h4>
+                    <p>Beauty Flawles Make Up Class - 2023</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-7">
+                    <img src="Gambar/sertifikat8.jpg" alt="Sertifikat 8">
+                    <h4>Peserta</h4>
+                    <p>Mengikuti Pelatihan Tata Rias Make Up Flawless Glamour - 2020</p>
+                </div>
+                <div class="cert-card" data-testid="cert-card-8">
+                    <img src="Gambar/sertifikat5.jpg" alt="Sertifikat 5">
+                    <h4>Juara 1 Lomba Tata Rias Manten</h4>
+                    <p>Lomba Perayaan Maulid Nabi SAW - 2018</p>
+                </div>
             </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat2.jpg">
-                <h4>Peserta</h4>
-                <p>Seminar & Parade Wedding Barbie Flawles Look Make Up - 2023</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat3.jpg">
-                <h4>Peserta</h4>
-                <p>Mengikuti Pelatihan Tata Rias - 2023</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat4.jpg">
-                <h4>Peserta</h4>
-                <p>Semi Bold Make Up - 2023</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat6.jpg">
-                <h4>Peserta</h4>
-                <p>Workshop Make Up Wedding  - 2023</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat7.jpg">
-                <h4>Peserta</h4>
-                <p>Beauty Flawles Make Up Class - 2023</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat8.jpg">
-                <h4>Peserta</h4>
-                <p>Mengikuti Pelatihan Tata Rias Make Up Flawless Glamour - 2020</p>
-            </div>
-            <div class="cert-card">
-                <img src="Gambar/sertifikat5.jpg">
-                <h4>Juara 1 Lomba Tata Rias Manten</h4>
-                <p>Lomba Perayaan Maulid Nabi SAW - 2018</p>
-            </div>
-        </div>
-    </div>
-    </section>
-
-    <!-- Sertifikat Section end -->
-
-    <!-- Menu Section start -->
-    <section id="services" class="menu">
-        <h2><span>Arka_Project</span> Melayani :</h2>
-        <p>Daftar jasa yang tersedia :</p>
-
-        <div class="row">
-
-            <!-- MENU 1 -->
-            <div class="menu-card">
-                <img src="Gambar/menuwedding1.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Wedding Paket 1</h3>
-                <p class="menu-card-price">Rp 1.500.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Wedding Paket 1"
-                    data-price="1500000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-
-            <!-- MENU 2 -->
-            <div class="menu-card">
-                <img src="Gambar/paket2.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Wedding Paket 2</h3>
-                <p class="menu-card-price">Rp 2.500.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Wedding Paket 2"
-                    data-price="2500000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-
-            <!-- MENU 3 -->
-            <div class="menu-card">
-                <img src="Gambar/menuwedding2.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Wedding Paket 3</h3>
-                <p class="menu-card-price">Rp 3.300.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Wedding Paket 3"
-                    data-price="3300000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-            <!-- MENU WISUDA -->
-            <div class="menu-card">
-                <img src="Gambar/menuwisuda.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Make Up Wisuda</h3>
-                <p class="menu-card-price">Rp 350.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Make Up Wisuda"
-                    data-price="350000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-
-            <!-- MENU ENGAGEMENT -->
-            <div class="menu-card">
-                <img src="Gambar/engagement.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Make Up Engagement</h3>
-                <p class="menu-card-price">Rp 800.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Make Up Engagement"
-                    data-price="800000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-
-            <!-- MENU SIRAMAN -->
-            <div class="menu-card">
-                <img src="Gambar/menusiraman.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Make Up Siraman</h3>
-                <p class="menu-card-price">Rp 600.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Make Up Siraman"
-                    data-price="600000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-            <!-- MENU KARNAVAL -->
-            <div class="menu-card">
-                <img src="Gambar/menukarnaval.jpg" class="menu-card-img">
-                <h3 class="menu-card-title">Make Up Karnaval</h3>
-                <p class="menu-card-price">Rp 500.000</p>
-
-                <button 
-                    class="add-to-cart"
-                    data-name="Make Up Karnaval"
-                    data-price="500000">
-                    Tambah ke Keranjang
-                </button>
-            </div>
-
-
         </div>
     </section>
+    <!-- Experience & Sertifikat Section End -->
 
-    <!-- Menu Section end -->
+    <!-- Packages Section Start -->
+    <section id="packages" class="packages" data-testid="packages-section">
+        <h2 data-aos="fade-down" data-testid="packages-title"><span>Paket</span> Layanan</h2>
+        <p data-aos="fade-down" data-testid="packages-description">Pilih paket makeup yang sesuai dengan kebutuhan acara spesial Anda</p>
+        
+        <div class="row" data-aos="fade-up" data-aos-duration="1000">
+            <div class="package-card" data-service="wedding">
+                <div class="package-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <h3>Wedding Makeup</h3>
+                <div class="price">Rp 2.500.000</div>
+                <ul class="package-features">
+                    <li><i data-feather="check-circle"></i> Full Makeup Pengantin</li>
+                    <li><i data-feather="check-circle"></i> Hairdo & Sanggul Modern</li>
+                    <li><i data-feather="check-circle"></i> Aksesoris & Paes</li>
+                    <li><i data-feather="check-circle"></i> Touch Up 3x</li>
+                    <li><i data-feather="check-circle"></i> Free Makeup Keluarga (2 orang)</li>
+                    <li><i data-feather="check-circle"></i> Konsultasi Pre-Wedding</li>
+                </ul>
+                <div class="package-actions">
+                <button class="btn-package"
+                    onclick="openBookingModal('Wedding Makeup', 2500000)">
+                    Pesan Sekarang
+                </button>
+                <button class="btn-cart-icon"
+                onclick="addToCart('Wedding Makeup', 2500000)"
+                title="Tambah ke keranjang">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+            </div>
+        </div>
+            
+            <div class="package-card featured" data-service="engagement">
+                <div class="badge">POPULAR</div>
+                <div class="package-icon">
+                    <i class='bx bx-gift'></i>
+                </div>
+                <h3>Engagement Makeup</h3>
+                <div class="price">Rp 1.200.000</div>
+                <ul class="package-features">
+                    <li><i data-feather="check-circle"></i> Full Makeup Tunangan</li>
+                    <li><i data-feather="check-circle"></i> Hairdo Elegan</li>
+                    <li><i data-feather="check-circle"></i> Aksesoris</li>
+                    <li><i data-feather="check-circle"></i> Touch Up 2x</li>
+                    <li><i data-feather="check-circle"></i> False Lashes Premium</li>
+                    <li><i data-feather="check-circle"></i> Makeup Tahan Lama</li>
+                </ul>
+                <div class="package-actions">
+                <button class="btn-package"
+                onclick="openBookingModal('Engagement Makeup', 1200000)">
+                Pesan Sekarang
+                </button>
+                <button class="btn-cart-icon"
+                onclick="addToCart('Engagement Makeup', 1200000)"
+                title="Tambah ke keranjang">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                </div>
+                
+            </div>
+            
+            <div class="package-card" data-service="wisuda">
+                <div class="package-icon">
+                    <i class='bx bxs-graduation'></i>
+                </div>
+                <h3>Wisuda Makeup</h3>
+                <div class="price">Rp 500.000</div>
+                <ul class="package-features">
+                    <li><i data-feather="check-circle"></i> Natural Makeup</li>
+                    <li><i data-feather="check-circle"></i> Hairdo Simple</li>
+                    <li><i data-feather="check-circle"></i> Touch Up 1x</li>
+                    <li><i data-feather="check-circle"></i> False Lashes</li>
+                    <li><i data-feather="check-circle"></i> Bikin pangling</li>
+                    <li><i data-feather="check-circle"></i> Makeup Tahan Lama</li>
+                </ul>
+                <div class="package-actions">
+                <button class="btn-package"
+                onclick="openBookingModal('Wisuda Makeup', 500000)">
+                Pesan Sekarang
+                </button>
+                <button class="btn-cart-icon"
+                onclick="addToCart('Wisuda Makeup', 500000)"
+                title="Tambah ke keranjang">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                </div>
+                
+            </div>
+            
+            <div class="package-card" data-service="event">
+                <div class="package-icon">
+                    <i class='bx bx-party'></i>
+                </div>
+                <h3>Event Makeup</h3>
+                <div class="price">Rp 800.000</div>
+                <ul class="package-features">
+                    <li><i data-feather="check-circle"></i> Party Makeup</li>
+                    <li><i data-feather="check-circle"></i> Glamour Style</li>
+                    <li><i data-feather="check-circle"></i> Hairdo Kreatif</li>
+                    <li><i data-feather="check-circle"></i> Touch Up 1x</li>
+                    <li><i data-feather="check-circle"></i> Aksesoris Rambut</li>
+                </ul>
+                <div class="package-actions">
+                <button class="btn-package"
+                onclick="openBookingModal('Event Makeup', 800000)">
+                Pesan Sekarang
+                </button>
+                <button class="btn-cart-icon"
+                onclick="addToCart('Event Makeup', 800000)"
+                title="Tambah ke keranjang">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                </div>
+            </div>
+            
+            <div class="package-card" data-testid="package-siraman">
+                <div class="package-icon">
+                    <i class='bx bx-water'></i>
+                </div>
+                <h3>Siraman Makeup</h3>
+                <div class="price">Rp 1.500.000</div>
+                <ul class="package-features">
+                    <li><i data-feather="check-circle"></i> Makeup Adat Jawa</li>
+                    <li><i data-feather="check-circle"></i> Sanggul Tradisional</li>
+                    <li><i data-feather="check-circle"></i> Paes Lengkap</li>
+                    <li><i data-feather="check-circle"></i> Aksesoris Adat</li>
+                    <li><i data-feather="check-circle"></i> Touch Up 2x</li>
+                </ul>
+                <div class="package-actions">
+                <button class="btn-package"
+                onclick="openBookingModal('Siraman Makeup', 1500000)">
+                Pesan Sekarang
+                </button>
+                <button class="btn-cart-icon"
+                onclick="addToCart('Siraman Makeup', 1500000)"
+                title="Tambah ke keranjang">
+                <i class="fa-solid fa-cart-shopping"></i>
+                </button>
+                </div>
+                
+                </div>
+        </div>
+    </section>
+    <!-- Packages Section End -->
 
-    <!-- Portofolio Section start -->
-        <section id="portofolio" class="portofolio">
-        <h2><span>Galeri</span> Arka_Project</h2>
-        <p>Dokumentasi hasil Arka_Project :</p>
+    <!-- Portofolio Section Start -->
+    <section id="portofolio" class="portofolio" data-testid="portfolio-section">
+        <h2 data-aos="fade-down" data-testid="portfolio-title"><span>Galeri</span> Arka_Project</h2>
+        <p data-aos="fade-down" data-testid="portfolio-description">Dokumentasi hasil Arka_Project :</p>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" data-aos="fade-up" data-testid="filter-buttons">
+            <button class="filter-btn active" data-filter="all" data-testid="filter-all">Semua</button>
+            <button class="filter-btn" data-filter="wedding" data-testid="filter-wedding">Wedding</button>
+            <button class="filter-btn" data-filter="wisuda" data-testid="filter-wisuda">Wisuda</button>
+            <button class="filter-btn" data-filter="engagement" data-testid="filter-engagement">Engagement</button>
+            <button class="filter-btn" data-filter="event" data-testid="filter-event">Event</button>
+        </div>
     
-        <div class="row">
-            <div class="portofolio-card">
-                <img src="Gambar/galeri1.jpg" alt="Wedding Makeup" class="portofolio-card-img">
+        <div class="row gallery-grid" data-aos="fade-up" data-aos-duration="1000">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-1">
+                <img src="Gambar/galeri15.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri2.jpg" alt="Wedding Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-2">
+                <img src="Gambar/menuwedding.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri3.jpg" alt="Wedding Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-3">
+                <img src="Gambar/menuwedding1.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri4.jpg" alt="Wisuda Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wisuda" data-testid="portfolio-item-4">
+                <img src="Gambar/menuwedding2.jpg" alt="Wisuda Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri5.jpg" alt="Wedding Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri13.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri6.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri14.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri7.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri18.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri8.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri19.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri9.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri22.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri10.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri23.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri11.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri27.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri12.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri28.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri14.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri29.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri15.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri30.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri16.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-5">
+                <img src="Gambar/galeri31.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri17.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-6">
+                <img src="Gambar/galeri6.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri18.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-7">
+                <img src="Gambar/galeri7.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri19.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-8">
+                <img src="Gambar/galeri8.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri20.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-9">
+                <img src="Gambar/galeri9.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri21.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-10">
+                <img src="Gambar/galeri10.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri22.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-12">
+                <img src="Gambar/galeri12.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri23.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-14">
+                <img src="Gambar/galeri14.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri24.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-15">
+                <img src="Gambar/galeri15.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri25.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-16">
+                <img src="Gambar/galeri16.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri26.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-17">
+                <img src="Gambar/galeri17.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri27.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-18">
+                <img src="Gambar/galeri18.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri28.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-19">
+                <img src="Gambar/galeri19.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri29.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-20">
+                <img src="Gambar/galeri20.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri30.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-21">
+                <img src="Gambar/galeri21.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
-            <div class="portofolio-card">
-                <img src="Gambar/galeri31.jpg" alt="Engagement Makeup" class="portofolio-card-img">
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-22">
+                <img src="Gambar/galeri22.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
             </div>
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-23">
+                <img src="Gambar/galeri23.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="wisuda" data-testid="portfolio-item-24">
+                <img src="Gambar/galeri24.jpg" alt="Wisuda Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="wisuda" data-testid="portfolio-item-25">
+                <img src="Gambar/galeri25.jpg" alt="Wisuda Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-26">
+                <img src="Gambar/galeri26.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="engagement" data-testid="portfolio-item-27">
+                <img src="Gambar/galeri27.jpg" alt="Engagement Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-28">
+                <img src="Gambar/galeri28.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="wedding" data-testid="portfolio-item-29">
+                <img src="Gambar/galeri29.jpg" alt="Wedding Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-30">
+                <img src="Gambar/galeri30.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+            <div class="portofolio-card" data-category="event" data-testid="portfolio-item-31">
+                <img src="Gambar/galeri31.jpg" alt="Event Makeup" class="portofolio-card-img" onclick="openLightbox(this)">
+                <div class="overlay">
+                    <i data-feather="zoom-in"></i>
+                </div>
+            </div>
+        </div>
     </section>
-    <!-- Portofolio Section end -->
+    <!-- Portofolio Section End -->
     
-    <!-- Contact Menu Section start-->
-    <section id="contact" class="contact">
-        <h2><span>Kontak</span> Kami</h2>
-        <p>Hubungi Arka Project untuk pemesanan jasa makeup sesuai kebutuhan acara spesial Anda.</p>
+    <!-- Testimonials Section Start -->
+    <section id="testimonials" class="testimonials" data-testid="testimonials-section">
+        <h2 data-aos="fade-down" data-testid="testimonials-title"><span>Testimoni</span> Pelanggan</h2>
+        <p data-aos="fade-down" data-testid="testimonials-description">Apa kata mereka yang sudah merasakan layanan Arka Project</p>
+        
+        <div class="testimonial-slider" data-aos="fade-up" data-aos-duration="1000">
+            <div class="testimonial-track" data-testid="testimonial-track">
+                <div class="testimonial-card" data-testid="testimonial-1">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p class="testimonial-text">"Makeup untuk wedding saya sangat sempurna! Kak Afrika sangat profesional dan detail. Makeup tahan seharian penuh, dari akad sampai resepsi. Highly recommended!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Siti Nurhaliza</h4>
+                            <p>Wedding - Pamekasan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-testid="testimonial-2">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p class="testimonial-text">"Makeup wisuda saya cantik banget! Natural tapi tetap terlihat flawless di foto. Terima kasih Arka Project, puas banget dengan hasilnya ❤️"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Dewi Ayu</h4>
+                            <p>Wisuda - Surabaya</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-testid="testimonial-3">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p class="testimonial-text">"MUA yang sangat talented! Makeup engagement saya di-handle dengan sempurna. Ramah, on-time, dan hasilnya beyond expectation. Thank you so much!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Rizka Amalia</h4>
+                            <p>Engagement - Madura</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-testid="testimonial-4">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star-half'></i>
+                    </div>
+                    <p class="testimonial-text">"Makeup siraman adat Jawa yang sangat detail dan cantik. Sanggulnya rapi, paes-nya lengkap. Semua tamu bilang saya cantik banget. Makasih Kak Afrika! 🙏"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Intan Permata</h4>
+                            <p>Siraman - Pamekasan</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card" data-testid="testimonial-5">
+                    <div class="stars">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p class="testimonial-text">"Selalu puas dengan hasil makeup dari Arka Project! Sudah 3x pakai jasa dan selalu memuaskan. Professional, friendly, dan harga worth it banget!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">
+                            <i class='bx bxs-user-circle'></i>
+                        </div>
+                        <div class="author-info">
+                            <h4>Linda Wijaya</h4>
+                            <p>Event - Sampang</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial-controls" data-testid="testimonial-controls">
+            <button class="prev-btn" onclick="moveTestimonial(-1)" data-testid="testimonial-prev">
+                <i data-feather="chevron-left"></i>
+            </button>
+            <button class="next-btn" onclick="moveTestimonial(1)" data-testid="testimonial-next">
+                <i data-feather="chevron-right"></i>
+            </button>
+        </div>
+    </section>
+    <!-- Testimonials Section End -->
 
+    <!-- Contact Section Start -->
+    <section id="contact" class="contact" data-testid="contact-section">
+        <h2 data-aos="fade-down" data-testid="contact-title"><span>Kontak</span> Kami</h2>
+        <p data-aos="fade-down" data-testid="contact-description">Hubungi Arka Project untuk pemesanan jasa makeup sesuai kebutuhan acara spesial Anda.</p>
+        
         <div class="row">
             <iframe 
-                src="https://www.google.com/maps/embed?pb=..." 
-                class="map">
+                src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3960.57304150111!2d113.57910537499671!3d-6.941520193058536!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2s!5e0!3m2!1sid!2sid!4v1764716715505!5m2!1sid!2sid" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade" 
+                class="map"
+                data-aos="fade-right"
+                data-aos-duration="800"
+                data-testid="contact-map">
             </iframe>
-
-            <form action="">
-                <!-- INPUT NAMA -->
+            
+            <form id="contact-form" data-aos="fade-left" data-aos-duration="800" data-testid="contact-form">
                 <div class="input-grup">
                     <i data-feather="user"></i>
-                    <input 
-                        type="text" 
-                        placeholder="Nama"
-                        id="nama">
+                    <input type="text" placeholder="Nama Lengkap" id="contact-name" required data-testid="contact-name-input">
                 </div>
-
-                <!-- INPUT EMAIL -->
                 <div class="input-grup">
                     <i data-feather="mail"></i>
-                    <input type="text" placeholder="Email">
+                    <input type="email" placeholder="Email" id="contact-email" required data-testid="contact-email-input">
                 </div>
-
-                <!-- INPUT TELEPON -->
                 <div class="input-grup">
                     <i data-feather="phone"></i>
-                    <input type="text" placeholder="Telepon">
+                    <input type="tel" placeholder="Nomor Telepon" id="contact-phone" required data-testid="contact-phone-input">
                 </div>
-
-                <button type="submit" class="btn">Kirim Pesan</button>
+                <div class="input-grup">
+                    <i data-feather="message-circle"></i>
+                    <textarea placeholder="Pesan Anda..." id="contact-message" rows="5" required data-testid="contact-message-input"></textarea>
+                </div>
+                <button type="submit" class="btn" data-testid="contact-submit-btn">Kirim Pesan</button>
             </form>
         </div>
     </section>
+    <!-- Contact Section End -->
 
-    <!-- Contact Menu Section end -->
-
-    <!-- Footer start -->
-    <footer>
-        <div class="social">
-            <a href="https://www.instagram.com/arka_project_weddingdecoration?igsh=bWI3YmxqbHR0djk5"><i data-feather="instagram"></i></a>
-            <a href="https://wa.me/6287846380434" target="_blank"><i data-feather="message-circle"></i></a>
-            <a href="https://www.facebook.com/share/17rKugmwdZ/"><i data-feather="facebook"></i></a>
-            <a href="https://www.tiktok.com/@afrika.watin?_r=1&_t=ZS-91ti4G4x0yY" target="_blank"><i class='bx bxl-tiktok'></i></a>
+    <!-- Footer Start -->
+    <footer data-testid="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3 data-testid="footer-logo">Arka<span>_Project</span></h3>
+                <p>Professional Makeup Artist untuk semua momen berharga Anda.</p>
+                <div class="social" data-testid="footer-social">
+                    <a href="https://www.instagram.com/arka_project_weddingdecoration?igsh=bWI3YmxqbHR0djk5" target="_blank" data-testid="social-instagram">
+                        <i class='bx bxl-instagram'></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@afrika.watin?_r=1&_t=ZS-91ti4G4x0yY" target="_blank" data-testid="social-tiktok">
+                        <i class='bx bxl-tiktok'></i>
+                    </a>
+                    <a href="https://www.facebook.com/share/17rKugmwdZ/" target="_blank" data-testid="social-facebook">
+                        <i class='bx bxl-facebook-circle'></i>
+                    </a>
+                    <a href="https://wa.me/6287846380434" target="_blank" data-testid="social-whatsapp">
+                        <i class='bx bxl-whatsapp'></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <div class="links" data-testid="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#packages">Paket</a>
+                    <a href="#portofolio">Galeri</a>
+                    <a href="#testimonials">Testimoni</a>
+                    <a href="#contact">Kontak</a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Kontak Info</h4>
+                <div class="contact-info">
+                    <p><i data-feather="map-pin"></i> Sana Dejeh, Pasean, Pamekasan</p>
+                    <p><i data-feather="phone"></i> +62 878-4638-0434</p>
+                    <p><i data-feather="mail"></i> arkaproject@gmail.com</p>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Jam Operasional</h4>
+                <div class="operating-hours">
+                    <p>Senin - Jumat: 08.00 - 20.00</p>
+                    <p>Sabtu - Minggu: 08.00 - 22.00</p>
+                    <p><strong>Booking 24/7 via WhatsApp</strong></p>
+                </div>
+            </div>
         </div>
-
-        <div class="links">
-            <a href="#home">Home</a>
-            <a href="#about">Tentang Kami</a>
-            <a href="#services">Layanan</a>
-            <a href="#portofolio">Portofolio</a>
-            <a href="#contact">Kontak</a>
-        </div>
-
-        <div class="credit">
-            <p>Created by <a href="">Fitriwulandari</a>. |&copy;2025</p>
+        
+        <div class="footer-bottom">
+            <p class="credit" data-testid="footer-credit">
+                &copy; 2025 <a href="#">Arka Project</a>. All Rights Reserved | Designed with <i class='bx bxs-heart'></i> by Arka Team
+            </p>
         </div>
     </footer>
-    <!-- Footer end -->
-
-    <!-- feather icons -->
+    <!-- Footer End -->
+    
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" data-testid="lightbox-modal">
+        <span class="close-lightbox" onclick="closeLightbox()" data-testid="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img" data-testid="lightbox-image">
+        <div class="lightbox-caption" id="lightbox-caption" data-testid="lightbox-caption"></div>
+        <button class="lightbox-prev" onclick="changeLightboxImage(-1)" data-testid="lightbox-prev">
+            <i data-feather="chevron-left"></i>
+        </button>
+        <button class="lightbox-next" onclick="changeLightboxImage(1)" data-testid="lightbox-next">
+            <i data-feather="chevron-right"></i>
+        </button>
+    </div>
+    
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal" data-testid="booking-modal">
+        <div class="modal-content" data-aos="zoom-in">
+            <span class="close-modal" onclick="closeBookingModal()" data-testid="booking-close">&times;</span>
+            <h2 data-testid="booking-title"><i data-feather="calendar"></i> Form Pemesanan</h2>
+            <form id="booking-form" data-testid="booking-form">
+                <div class="form-group">
+                    <label for="booking-package">Paket Makeup</label>
+                    <input type="text" id="booking-package" readonly data-testid="booking-package-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-name">Nama Lengkap</label>
+                    <input type="text" id="booking-name" placeholder="Masukkan nama lengkap" required data-testid="booking-name-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-phone">Nomor WhatsApp</label>
+                    <input type="tel" id="booking-phone" placeholder="Contoh: 08123456789" required data-testid="booking-phone-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-date">Tanggal Acara</label>
+                    <input type="date" id="booking-date" required data-testid="booking-date-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-time">Waktu Acara</label>
+                    <input type="time" id="booking-time" required data-testid="booking-time-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-location">Lokasi Acara</label>
+                    <input type="text" id="booking-location" placeholder="Masukkan lokasi acara" required data-testid="booking-location-input">
+                </div>
+                
+                <div class="form-group">
+                    <label for="booking-notes">Catatan Tambahan</label>
+                    <textarea id="booking-notes" rows="3" placeholder="Contoh: Request makeup natural, alergi produk tertentu, dll" data-testid="booking-notes-input"></textarea>
+                </div>
+                
+                <div class="price-summary" data-testid="booking-price-summary">
+                    <h3>Total Harga</h3>
+                    <div class="price-amount" id="booking-price">Rp 0</div>
+                </div>
+                
+                <button type="submit" class="btn-submit" data-testid="booking-submit-btn">
+                    <i class='bx bxl-whatsapp'></i> Checkout via WhatsApp
+                </button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6287846380434?text=Halo%20Arka%20Project,%20saya%20ingin%20bertanya%20tentang%20layanan%20makeup" 
+    class="whatsapp-float" 
+    target="_blank"
+    data-testid="whatsapp-float">
+        <i class='bx bxl-whatsapp'></i>
+    </a>
+    
+    <!-- AOS Animation -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- Feather Icons -->
     <script>
         feather.replace();
     </script>
-
-    <!-- my javascript -->
+    
+    <!-- Custom JavaScript -->
     <script src="JS/script.js"></script>
     
-    <script>
-    // ELEMENT
-    const hamburgerMenu = document.getElementById("hamburger-menu");
-    const serviceDrawer = document.getElementById("service-drawer");
-    const closeService = document.getElementById("close-service");
-
-    const cartSidebar = document.getElementById("cart-sidebar");
-    const closeCart = document.getElementById("close-cart");
-
-    const overlay = document.getElementById("overlay");
-
-    // === HAMBURGER → SERVICE DRAWER ===
-    hamburgerMenu.onclick = () => {
-        serviceDrawer.classList.add("active");
-        overlay.classList.add("active");
-    };
-
-    // === CLOSE SERVICE DRAWER ===
-    closeService.onclick = () => {
-        serviceDrawer.classList.remove("active");
-        overlay.classList.remove("active");
-    };
-
-    // === SHOPPING CART ===
-    document.getElementById("shopping-cart").onclick = () => {
-        cartSidebar.classList.add("active");
-        overlay.classList.add("active");
-    };
-
-    // === CLOSE CART ===
-    closeCart.onclick = () => {
-        cartSidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    };
-
-    // === OVERLAY CLOSE ALL ===
-    overlay.onclick = () => {
-        serviceDrawer.classList.remove("active");
-        cartSidebar.classList.remove("active");
-        overlay.classList.remove("active");
-    };
-    </script>
-
-    <div class="cart-sidebar">
-    <div class="cart-header">
-        <h3>Keranjang</h3>
-        <button id="close-cart">✕</button>
-    </div>
-
-    <div id="cart-content"></div>
-
-    <!-- CHECKOUT BOX -->
-    <div class="checkout-box">
-        <div class="checkout-total">
-            <span>Total</span>
-            <strong id="total-price">Rp 0</strong>
-        </div>
-
-        <button id="checkout-btn">Checkout WhatsApp</button>
-    </div>
-</div>
-
-<div class="overlay"></div>
-
-<!-- TOAST -->
-<div id="toast">Anda telah menambahkan ke keranjang</div>
-
 </body>
 </html>
