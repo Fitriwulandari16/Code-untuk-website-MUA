@@ -418,13 +418,151 @@ if (searchBox && searchForm) {
         }
     });
 }
-let cart = JSON.parse(localStorage.getItem("cart")) || [];
+// =====================
+// CART SYSTEM (FIX FINAL)
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
 
-function addToCart(name, price) {
-  cart.push({ name, price });
-  localStorage.setItem("cart", JSON.stringify(cart));
+  // =====================
+  // ELEMENTS
+  // =====================
+  const cartBtn   = document.getElementById("shopping-cart-button");
+  const cartModal = document.getElementById("cartModal");
+  const cartList  = document.getElementById("cart-list");
+  const cartTotal = document.getElementById("cart-total");
+  const cartCount = document.getElementById("cart-count");
 
-  alert("✅ Ditambahkan ke keranjang");
+  // =====================
+  // DATA (SINGLE SOURCE)
+  // =====================
+  let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+  // =====================
+  // CORE FUNCTIONS
+  // =====================
+  function saveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+    cartCount.textContent = cart.length; // ⬅️ SATU-SATUNYA SUMBER ANGKA
+  }
+
+  function renderCart() {
+    cartList.innerHTML = "";
+    let total = 0;
+
+    if (cart.length === 0) {
+      cartList.innerHTML = "<li>Keranjang kosong</li>";
+      cartTotal.textContent = "0";
+      return;
+    }
+
+    cart.forEach((item, index) => {
+      total += item.price;
+
+      cartList.innerHTML += `
+        <li>
+          ${item.name}
+          <strong>Rp ${item.price.toLocaleString("id-ID")}</strong>
+          <button onclick="removeCart(${index})">❌</button>
+        </li>
+      `;
+    });
+
+    cartTotal.textContent = total.toLocaleString("id-ID");
+  }
+
+  // =====================
+  // EVENTS
+  // =====================
+  cartBtn.addEventListener("click", e => {
+    e.preventDefault();
+    renderCart();                 // ⬅️ selalu render ulang
+    cartModal.classList.add("active");
+  });
+
+  // =====================
+  // GLOBAL (BUTTON MENU)
+  // =====================
+  window.addToCart = function (btn) {
+    const name  = btn.dataset.name;
+    const price = Number(btn.dataset.price);
+
+    cart.push({ name, price });   // ⬅️ nambah KE DATA
+    saveCart();                   // ⬅️ update angka
+
+    alert("✅ Ditambahkan ke keranjang");
+  };
+
+  window.removeCart = function (index) {
+    cart.splice(index, 1);
+    saveCart();
+    renderCart();
+  };
+
+  window.closeCart = function () {
+    cartModal.classList.remove("active");
+  };
+
+  window.checkoutCart = function () {
+    let msg = "Halo, saya ingin memesan:%0A";
+    cart.forEach(item => {
+      msg += `- ${item.name} (Rp ${item.price.toLocaleString("id-ID")})%0A`;
+    });
+    window.open(`https://wa.me/6287846380434?text=${msg}`, "_blank");
+  };
+
+  // =====================
+  // INIT
+  // =====================
+  saveCart(); // load count saat refresh
+});
+
+function addToCart(btn) {
+  const name = btn.dataset.name;
+  const price = Number(btn.dataset.price);
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  saveCart();
+  renderCart();
+  cartModal.classList.add("active");
 }
+
+function showToast(message) {
+  const toast = document.getElementById("toast");
+  if (!toast) return;
+
+  toast.innerHTML = `🛒 ${message}`;
+  toast.classList.add("show", "success");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2500);
+}
+
+function addToCart(btn) {
+  const name = btn.dataset.name;
+  const price = Number(btn.dataset.price);
+
+  const existing = cart.find(item => item.name === name);
+
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push({ name, price, qty: 1 });
+  }
+
+  saveCart();
+  renderCart();
+
+  showToast(`${name} ditambahkan ke keranjang`);
+  cartModal.classList.add("active");
+}
+
 
 console.log('%c🎨 Arka Project Website - Developed with ❤️', 'color: #f58eca; font-size: 16px; font-weight: bold;');

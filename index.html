@@ -9,7 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <!-- Feather Icons -->
     <script src="https://unpkg.com/feather-icons"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
@@ -41,7 +42,8 @@
         
         <div class="navbar-extra">
             <a href="#" id="search-button" data-testid="search-button"><i data-feather="search"></i></a>
-            <a href="#" id="shopping-cart-button" data-testid="cart-button"><i data-feather="shopping-bag"></i></a>
+            <a href="#" id="shopping-cart-button"> <i data-feather="shopping-cart"></i><span id="cart-count">0</span></a>
+            
             <a href="#" id="hamburger-menu" data-testid="hamburger-menu"><i data-feather="menu"></i></a>
         </div>
         
@@ -59,7 +61,7 @@
             <h1 data-testid="hero-title">MAKEUP<span>ARTIST</span></h1>
             <p data-testid="hero-description">Percayakan riasan Anda kepada Arka Project, tempat keindahan, ketelitian, dan profesionalisme berpadu untuk menghadirkan tampilan elegan yang meningkatkan rasa percaya diri Anda di setiap momen berharga.</p>
             <a href="#packages" class="cta" data-testid="hero-cta-button">Lihat Paket</a>
-            <a href="#" class="cta cta-secondary" id="booking-btn" data-testid="hero-booking-button">Pesan Sekarang</a>
+            <a href="#" class="cta cta-secondary" id="booking-btn" data-testid="hero-booking-button">Booking Sekarang</a>
         </main>
     </section>
     <!-- Hero Section End -->
@@ -186,13 +188,17 @@
                 <div class="package-actions">
                 <button class="btn-package"
                     onclick="openBookingModal('Wedding Makeup', 2500000)">
-                    Pesan Sekarang
+                    Booking Sekarang
                 </button>
                 <button class="btn-cart-icon"
-                onclick="addToCart('Wedding Makeup', 2500000)"
-                title="Tambah ke keranjang">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    data-name="Wedding Makeup"
+                    data-price="2500000"
+                    onclick="addToCart(this)"
+                    title="Tambah ke keranjang">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
+
+
             </div>
         </div>
             
@@ -214,15 +220,15 @@
                 <div class="package-actions">
                 <button class="btn-package"
                 onclick="openBookingModal('Engagement Makeup', 1200000)">
-                Pesan Sekarang
+                Booking Sekarang
                 </button>
                 <button class="btn-cart-icon"
-                onclick="addToCart('Engagement Makeup', 1200000)"
-                title="Tambah ke keranjang">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    data-name="Engagement Makeup"
+                    data-price="1200000"
+                    onclick="addToCart(this)">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
                 </div>
-                
             </div>
             
             <div class="package-card" data-service="wisuda">
@@ -242,15 +248,15 @@
                 <div class="package-actions">
                 <button class="btn-package"
                 onclick="openBookingModal('Wisuda Makeup', 500000)">
-                Pesan Sekarang
+                Booking Sekarang
                 </button>
                 <button class="btn-cart-icon"
-                onclick="addToCart('Wisuda Makeup', 500000)"
-                title="Tambah ke keranjang">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    data-name="Wisuda Makeup"
+                    data-price="500000"
+                    onclick="addToCart(this)">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
                 </div>
-                
             </div>
             
             <div class="package-card" data-service="event">
@@ -269,12 +275,13 @@
                 <div class="package-actions">
                 <button class="btn-package"
                 onclick="openBookingModal('Event Makeup', 800000)">
-                Pesan Sekarang
+                Booking Sekarang
                 </button>
                 <button class="btn-cart-icon"
-                onclick="addToCart('Event Makeup', 800000)"
-                title="Tambah ke keranjang">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    data-name="Event Makeup"
+                    data-price="800000"
+                    onclick="addToCart(this)">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
                 </div>
             </div>
@@ -295,12 +302,14 @@
                 <div class="package-actions">
                 <button class="btn-package"
                 onclick="openBookingModal('Siraman Makeup', 1500000)">
-                Pesan Sekarang
+                Booking Sekarang
                 </button>
-                <button class="btn-cart-icon"
-                onclick="addToCart('Siraman Makeup', 1500000)"
-                title="Tambah ke keranjang">
-                <i class="fa-solid fa-cart-shopping"></i>
+                    <button class="btn-cart-icon"
+                    data-name="Siraman Makeup"
+                    data-price="1500000"
+                    onclick="addToCart(this)"
+                    title="Tambah ke keranjang">
+                    <i class="fa-solid fa-cart-shopping"></i>
                 </button>
                 </div>
                 
@@ -849,6 +858,25 @@
         </div>
     </div>
     
+    <div id="cartModal" class="cart-modal">
+        <div class="modal-content">
+        <span class="close-modal" onclick="closeCart()">×</span>
+        <h2>🛒 Keranjang</h2>
+
+        <ul id="cart-list"></ul>
+
+        <p>Total: Rp <span id="cart-total">0</span></p>
+
+        <button class="checkout-wa-btn" onclick="checkoutCart()">
+            <i class="fab fa-whatsapp"></i>
+            Checkout via WhatsApp
+        </button>
+
+        </div>
+    </div>
+
+    <div id="toast"></div>
+
     <!-- Floating WhatsApp Button -->
     <a href="https://wa.me/6287846380434?text=Halo%20Arka%20Project,%20saya%20ingin%20bertanya%20tentang%20layanan%20makeup" 
     class="whatsapp-float" 
@@ -867,6 +895,5 @@
     
     <!-- Custom JavaScript -->
     <script src="JS/script.js"></script>
-    
 </body>
 </html>
